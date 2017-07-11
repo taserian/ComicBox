@@ -1,0 +1,7 @@
+﻿<h1>Titles</h1>
+
+<p *ngIf="!titleList"><em>Loading...</em></p>
+
+    <h3 *ngFor="let title of titleList">
+        {{ title.seriesTitle }} <span class="" *ngFor="let tag of title.tags"> {{ tag.label }}</span>
+    </h3>
