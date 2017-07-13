@@ -8,7 +8,12 @@ export class Issue {
     issueReleaseDate?: Date;
     issuePrice?: number;
     gcdIssueId?: number;
-    title?: Title;
+    title: Title;
     books: Array<Book>;
     tags: Array<Tag>;
+
+    constructor() {
+        this.issueNumber = null;
+    }
+
 }

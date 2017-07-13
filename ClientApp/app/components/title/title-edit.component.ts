@@ -15,6 +15,7 @@ export class TitleEditComponent {
     @Input() title: Title;
 
     constructor(private fb: FormBuilder, private dbService: TitleService) {
+        debugger;
         this.createForm();
     }
 
@@ -50,7 +51,7 @@ export class TitleEditComponent {
     }
 
     addTag() {
-        this.tagsArray.push(this.fb.group(new Tag()));
+        this.tagsArray.push(this.fb.group(new Tag("")));
     }
     // #endregion
 

@@ -6,8 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ComicBox20170711.Controllers
 {
+
     public class HomeController : Controller
     {
+        [Route("/")]
         public IActionResult Index()
         {
             return View();

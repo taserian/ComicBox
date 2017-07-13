@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './components/app/app.component'
@@ -29,7 +29,7 @@ export let BASE_URL = new InjectionToken<string>("BASE_URL");
     ],
     imports: [
         BrowserModule,
-        //FormsModule,
+        FormsModule,
         HttpModule,
         BrowserAnimationsModule,
         ReactiveFormsModule,
