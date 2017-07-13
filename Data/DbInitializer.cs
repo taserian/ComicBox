@@ -38,39 +38,33 @@ namespace ComicBox.Data
             var books = new Book[]
             {
                 new Book{Issue= new Issue{
-                        Title= new Title{
-                            Publisher="Marvel",
-                            SeriesTitle ="Amazing Spider-Man",
-                            GcdSeriesId =92892,
-                            Tags=new List<TitleTag>{
-                                new TitleTag{
-                                    Tag = new ItemTag{Label="Subscribed"}
+                            Title= new Title{
+                                Publisher="Marvel",
+                                SeriesTitle ="Amazing Spider-Man",
+                                GcdSeriesId =92892,
+                                Tags=new List<Tag>{
+                                    new Tag { TagText = "Subscribed" }
                                 }
+                            },
+                            IssueNumber=13,
+                            IssuePrice =3.99M,
+                            GcdIssueId =1576777,
+                            Tags=new List<Tag>{
+                                new Tag{ TagText= "Spider-Man/Iron Man crossover" }
                             }
-                        },
-                        IssueNumber=13,
-                        IssuePrice =3.99M,
-                        GcdIssueId =1576777,
-                        Tags=new List<IssueTag>{
-                            new IssueTag{
-                                Tag = new ItemTag{Label="Spider-Man/Iron Man crossover" }
-                            }
-                        },
-                },
-                Location="Box 23",
-                BookGrade=Grade.Fine,
-                BookCondition=new List<BookCondition>{
-                    new BookCondition{
-                        Condition = new Condition{
-                            Label ="Yellowed pages"
-                        }
+                    },
+                    Location="Box 23",
+                    BookGrade=Grade.Fine,
+                    BookCondition=new List<Tag>{
+                        new Tag { TagText = "Yellowed pages" }
+                    },
+                    Tags=new List<Tag>{
+                        new Tag { TagText = "owned" },
+                        new Tag { TagText = "Comic-Con 2017 (get signature)"}
                     }
-                },
-                Tags=new List<BookTag>{
-                    new BookTag{Tag = new ItemTag { Label = "owned" } },
-                    new BookTag{Tag = new ItemTag { Label = "Comic-Con 2017 (get signature)" } } }
                 }
             };
+
             foreach (Book b in books)
             {
                 context.books.Add(b);

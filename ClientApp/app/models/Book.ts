@@ -1,5 +1,5 @@
 ﻿import { Issue } from "./Issue";
-import { Tag, BookTag, BookCondition } from "./Tag";
+import { Tag } from "./Tag";
 
 export class Book {
     id: number;
@@ -8,8 +8,8 @@ export class Book {
     CbcsGrade: number;
     CgcGrade: number;
     Issue: Issue;
-    BookCondition: Array<BookCondition>;
-    Tags: Array<BookTag>;
+    BookCondition: Array<Tag>;
+    Tags: Array<Tag>;
 }
 
 export enum Grade {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ComicBox.Data;
 
 /// <summary>
 /// Physical comic book, which can be bought/sold.
@@ -15,8 +16,8 @@ namespace ComicBox.Models
         public decimal? CgcGrade { get; set; }
 
         public Issue Issue { get; set; }
-        public ICollection<BookCondition> BookCondition { get; set; }
-        public ICollection<BookTag> Tags { get; set; }
+        public ICollection<Tag> BookCondition { get; set; }
+        public ICollection<Tag> Tags { get; set; }
     }
 
     public enum Grade

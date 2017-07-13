@@ -2,7 +2,8 @@
   "name": "ComicBox20170711",
   "version": "0.0.0",
   "scripts": {
-    "test": "karma start ClientApp/test/karma.conf.js"
+    "test": "karma start ClientApp/test/karma.conf.js",
+    "webpack": "webpack"
   },
   "dependencies": {
     "@angular/animations": "4.1.2",
@@ -13,7 +14,7 @@
     "@angular/http": "4.1.2",
     "@angular/platform-browser": "4.1.2",
     "@angular/platform-browser-dynamic": "4.1.2",
-    "@angular/platform-server": "4.1.2",
+    "@angular/platform-server": "^4.1.2",
     "@angular/router": "4.1.2",
     "@types/node": "7.0.18",
     "angular2-template-loader": "0.6.2",

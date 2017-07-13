@@ -4,6 +4,7 @@ using System.Collections;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using ComicBox.Models;
 using Newtonsoft.Json;
 
@@ -19,14 +20,23 @@ namespace ComicBox.Data
             _context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
-        public async Task<List<TitleShort>> GetTitleReferenceList()
+        private static void ApplyStateUsingIsKeySet(EntityEntry entry)
         {
-            var titles = await _context.titles
-                .Include(t => t.Tags)
-                    .ThenInclude(c => c.Tag)
-                .OrderBy(t => t.SeriesTitle)
-                .Select(i => i.ToShortData())
-                .ToListAsync();
+            if (entry.IsKeySet)
+            {
+                entry.State = EntityState.Modified;
+            }
+            else
+            {
+                entry.State = EntityState.Added;
+            }
+        }
+
+        public List<Title> GetTitleReferenceList()
+        {
+            var titles = _context.titles
+                 .Include(title => title.Tags)
+                 .ToList();
 
             return titles;
         }
@@ -35,17 +45,23 @@ namespace ComicBox.Data
         {
             var title = await _context.titles
                 .Include(t => t.Tags)
-                    .ThenInclude(c => c.Tag)
                 .Include(t => t.Issues)
                 .SingleOrDefaultAsync(t => t.TitleId == id);
 
             return title;
         }
 
-        //public async Task<IActionResult> SaveTitle(int id, Title title)
-        //{
+        public void SaveTitle(Title title)
+        {
+            _context.ChangeTracker
+                .TrackGraph(title, e => ApplyStateUsingIsKeySet(e.Entry));
+            _context.SaveChanges();
+        }
 
-        //}
+        public bool TitleExists(int id)
+        {
+            return _context.titles.Any(e => e.TitleId == id);
+        }
 
     }
 }

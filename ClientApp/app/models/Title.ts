@@ -1,5 +1,5 @@
 ﻿import { Issue } from "./Issue";
-import { Tag, TitleTag } from "./Tag";
+import { Tag } from "./Tag";
 
 export class Title {
     titleId: number;

@@ -1,7 +1,18 @@
-﻿<h1>Titles</h1>
+﻿<div class="row"><h1>Titles</h1><a class="glyphicon glyphicon-refresh" (click)="select(title)"></a></div>
 
 <p *ngIf="!titleList"><em>Loading...</em></p>
 
-    <h3 *ngFor="let title of titleList">
-        {{ title.seriesTitle }} <span class="" *ngFor="let tag of title.tags"> {{ tag.label }}</span>
-    </h3>
+<div class="row" *ngFor="let title of titleList">
+    <a class="glyphicon glyphicon-pencil" (click)="select(title)"></a>
+    <span class="title">{{ title.seriesTitle }}</span>
+    <span class="tag" *ngFor="let tag of title.tags">{{ tag.tagText }}</span>
+</div>
+<a class="glyphicon glyphicon-plus-sign" (click)="select()"></a>
+
+<div *ngIf="selectedTitle" class="row">
+    <h3>Title Edit</h3>
+    <title-edit [title]="selectedTitle"></title-edit>
+</div>
+
+
+

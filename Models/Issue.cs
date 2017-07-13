@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ComicBox.Data;
 
 /// <summary>
 /// Comic Book Issue, as in "Iron Man #1".
@@ -17,7 +18,7 @@ namespace ComicBox.Models
 
         public Title Title { get; set; }
         public ICollection<Book> Books { get; set; }
-        public ICollection<IssueTag> Tags { get; set; }
+        public ICollection<Tag> Tags { get; set; }
 
     }
 

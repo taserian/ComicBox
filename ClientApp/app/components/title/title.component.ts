@@ -3,22 +3,30 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
 import { Title } from '../../models/Title';
-
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/filter';
-
+import { TitleService } from '../../services/title.service';
 
 @Component({
     selector: 'titleList',
-    templateUrl: 'title.component.html',
-    styleUrls: []
+    templateUrl: './title.component.html',
+    styleUrls: [ './title.component.css' ]
 })
 export class TitleListComponent {
-    public titleList: Title[];
+    titleList: Title[];
+    selectedTitle: Title;
 
-    constructor(http: Http, @Inject('ORIGIN_URL') originUrl: string) {
-        http.get(originUrl + '/api/Titles/').subscribe(result => {
-            this.titleList = result.json() as Title[];
-        });
+    constructor(private dbService: TitleService) {
+    }
+
+    ngOnInit() {
+        this.getTitles();
+    }
+
+    getTitles() {
+        this.dbService.getTitles()
+            .subscribe((data: Title[]) => this.titleList = data);
+    }
+
+    select(title?: Title) {
+        this.selectedTitle = title || new Title();
     }
 }

@@ -1,0 +1,41 @@
+﻿<form [formGroup]="titleForm" novalidate>
+    <div style="margin-bottom: 1em">
+        <button type="submit"
+                [disabled]="titleForm.pristine" class="btn btn-success">
+            Save
+        </button> &nbsp;
+        <button type="reset" (click)="revert()"
+                [disabled]="titleForm.pristine" class="btn btn-danger">
+            Revert
+        </button>
+    </div>
+    <div class="form-group">
+        <label class="center-block">
+            Series Title: <input class="form-control" formControlName="seriesTitle" />
+        </label>
+        <label class="center-block">
+            Publisher: <input class="form-control" formControlName="publisher" />
+        </label>
+        <label class="center-block">
+            GCD Series ID: <input class="form-control" formControlName="gcdSeriesId" />
+        </label>
+        <div class="well well-lg" formArrayName="titleTags">
+            <div *ngFor="let tag of tagsArray.controls; let i=index" [formGroupName]="i">
+                <div class="form-group">
+                    <label class="center-block">Tag: <input class="form-control" formControlName="tagText"></label>
+                </div>
+            </div>
+            <button (click)="addTag()" type="button">+Tag</button>
+        </div>
+        <div class="well well-lg" formArrayName="issueNumbers">
+            <div *ngFor="let issues of issuesArray.controls; let i=index" [formGroupName]="i">
+                <div class="form-group">
+                    <label class="center-block">Issue#: <input class="form-control" formControlName="issueNumber"></label>
+                </div>
+            </div>
+            <button (click)="addIssue()" type="button">+Issue</button>
+        </div>
+    </div>
+</form>
+<p>Title Value: {{ title | json }}</p>
+<p>Title Form Value: {{ titleForm.value | json }}</p>

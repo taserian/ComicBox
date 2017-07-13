@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject, InjectionToken } from '@angular/core';
 
 @Component({
     selector: 'app',
